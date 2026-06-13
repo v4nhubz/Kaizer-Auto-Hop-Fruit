@@ -12,7 +12,7 @@ local UIS            = game:GetService("UserInputService")
 local lp = Players.LocalPlayer
 
 -- statusText declarado aquÃ­ para que todas las funciones lo vean
-local statusText = "Iniciando..."
+local statusText = "Starting..."
 
 local CONFIG = {
     MinPlayers  = 3,
@@ -138,7 +138,7 @@ local function clickStoreFruitButton()
 
     -- BF usa estos nombres de botÃ³n para guardar fruta
     local storeNames = {
-        "StoreButton","StoreFruit","Store","GuardarFruta","SaveFruit",
+        "StoreButton","StoreFruit","Store","SavingFruit","SaveFruit",
         "btnStore","Btn_Store","StoreBloxFruit","ConfirmStore"
     }
     local storeTexts = {"store","guardar","save fruit","keep","guardar fruta"}
@@ -191,13 +191,13 @@ local function setupFruitDetection()
             local dist = (handle.Position - h.Position).Magnitude
             if dist < 15 then
                 local name = obj:GetAttribute("FruitName") or obj.Name
-                statusText = "ðŸ’¾ Guardando "..name.."..."
+                statusText = "Getting Fruit Info"..name.."..."
                 -- Intentar clickear el botÃ³n Store de BF
                 task.spawn(function()
                     task.wait(0.3)
                     local clicked = clickStoreFruitButton()
                     if clicked then
-                        statusText = "ðŸ’¾ "..name.." guardada!"
+                        statusText = "Storing"..name.."Stored"
                     else
                         -- Fallback: remote directo
                         pcall(function()
@@ -216,7 +216,7 @@ local function setupFruitDetection()
 end
 
 local function storeFruitInBackpack()
-    statusText = "âœ… Recogida!"
+    statusText = "Collected"
 end
 
 -- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -236,7 +236,7 @@ local function serverHop()
     lastHopTime = os.clock()
     task.delay(15, function() isHopping = false end)
 
-    statusText = "ðŸ”„ Buscando servidor..."
+    statusText = "Looking for Servers."
 
     local allServers = {}
     local found      = false
@@ -293,7 +293,7 @@ local function serverHop()
     end
 
     if #allServers == 0 then
-        statusText = "âš  Sin servidores disponibles"
+        statusText = "Kaizer can't find any available server."
         isHopping = false
         return false
     end
@@ -302,7 +302,7 @@ local function serverHop()
     table.sort(allServers, function(a, b) return a.count < b.count end)
     local target = allServers[math.random(1, math.min(3, #allServers))]
 
-    statusText = "ðŸš€ Hopeando... ("..target.count.." jugadores)"
+    statusText = "Hopping... ("..target.count.." players)"
     task.wait(0.3)
 
     local ok = pcall(function()
@@ -314,7 +314,7 @@ local function serverHop()
     end)
 
     if not ok then
-        statusText = "âš  Teleport fallÃ³, reintentando..."
+        statusText = "Teleporting Failed, Restarting"
         isHopping   = false
         lastHopTime = os.clock() - CONFIG.HopCooldown + 3
         return false
@@ -329,15 +329,15 @@ end
 local function mainLoop()
     -- Seleccionar Piratas al inicio
     if not teamSelected then
-        statusText = "Seleccionando Piratas..."
+        statusText = "Selecting Pirates..."
         for _ = 1, 12 do
             if selectPirates() then teamSelected = true; break end
             task.wait(1)
         end
         if not teamSelected then
-            statusText = "âš  No se pudo unir a Piratas"
+            statusText = "âš  Couldn't join pirates"
         else
-            statusText = "âœ… Piratas seleccionado"
+            statusText = "Pirates selected"
         end
     end
 
@@ -349,7 +349,7 @@ local function mainLoop()
 
         if fruit then
             local name = fruit:GetAttribute("FruitName") or fruit.Name
-            statusText = "ðŸŽ "..name.."  ("..math.floor(dist).."m)"
+            statusText = "Kaizer"..name.."  ("..math.floor(dist).."m)"
 
             -- Verificar que la fruta sigue existiendo antes de moverse
             if not fruit.Parent or not fruit:FindFirstChild("Handle") then
@@ -362,13 +362,13 @@ local function mainLoop()
 
             -- Verificar si se recogiÃ³
             if not fruit.Parent or not fruit:FindFirstChild("Handle") then
-                statusText = "âœ… Recogida! Guardando..."
+                statusText = "Recognizing! Guarded..."
                 task.wait(0.3)
                 storeFruitInBackpack()
                 task.wait(0.5)
             end
         else
-            statusText = "ðŸ”„ Sin frutas â†’ Hop"
+            statusText = "Kaizer”„ No fruits at Hop"
             task.wait(0.5)
             teamSelected = false
             local hopOk = serverHop()
@@ -545,17 +545,17 @@ end)
 local function stopHopper()
     running = false
     if hopperThread then task.cancel(hopperThread); hopperThread = nil end
-    statusText = "Detenido"
+    statusText = "Stopped"
     TogBtn.BackgroundColor3 = Color3.fromRGB(160,0,0)
-    TogBtn.Text = "ðŸ”´  INICIAR"
+    TogBtn.Text = "Kaizer”´  Start"
 end
 
 local function startHopperThread()
     stopHopper(); task.wait(0.05)
     running = true
-    statusText = "Arrancando..."
+    statusText = "Removing..."
     TogBtn.BackgroundColor3 = Color3.fromRGB(0,140,0)
-    TogBtn.Text = "ðŸŸ¢  DETENER"
+    TogBtn.Text = "Hold"
     hopperThread = task.spawn(startHopper)
 end
 
@@ -598,7 +598,7 @@ do
     end)
 end
 
-print("[ðŸ´â€â˜ ï¸ Fruit Hopper v4] Listo âœ”")
+print("[Kaizer Fruit Hopper]”")
 
 -- Activar detecciÃ³n de frutas en mochila
 setupFruitDetection()
