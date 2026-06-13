@@ -378,7 +378,7 @@ local function mainLoop()
                 break
             else
                 -- Hop fallÃ³ â€” esperar y reintentar en el siguiente ciclo
-                statusText = "âš  Hop fallÃ³, reintentando en 5s..."
+                statusText = "Hop fail, restarting in 5s..."
                 task.wait(5)
                 -- No rompemos el loop, volvemos a buscar frutas o intentar hop
             end
@@ -500,7 +500,7 @@ HTit.TextSize=12; HTit.TextXAlignment=Enum.TextXAlignment.Left
 local CloseB = Instance.new("TextButton",Hdr)
 CloseB.Size=UDim2.new(0,22,0,22); CloseB.Position=UDim2.new(1,-26,0,6)
 CloseB.BackgroundColor3=Color3.fromRGB(200,50,50); CloseB.TextColor3=Color3.new(1,1,1)
-CloseB.Font=Enum.Font.GothamBold; CloseB.TextSize=12; CloseB.BorderSizePixel=0; CloseB.Text="âœ•"
+CloseB.Font=Enum.Font.GothamBold; CloseB.TextSize=12; CloseB.BorderSizePixel=0; CloseB.Text="Pft"
 Instance.new("UICorner",CloseB).CornerRadius=UDim.new(0,5)
 
 -- Toggle btn â€” empieza en verde porque el script arranca solo
@@ -508,7 +508,7 @@ local TogBtn = Instance.new("TextButton", Panel)
 TogBtn.Size=UDim2.new(0.88,0,0,32); TogBtn.Position=UDim2.new(0.06,0,0,42)
 TogBtn.BackgroundColor3=Color3.fromRGB(0,140,0)
 TogBtn.TextColor3=Color3.new(1,1,1); TogBtn.Font=Enum.Font.GothamBold
-TogBtn.TextSize=12; TogBtn.BorderSizePixel=0; TogBtn.Text="ðŸŸ¢  DETENER"
+TogBtn.TextSize=12; TogBtn.BorderSizePixel=0; TogBtn.Text="Finding"
 Instance.new("UICorner",TogBtn).CornerRadius=UDim.new(0,6)
 
 -- Status label
@@ -523,7 +523,7 @@ local ESPBtn = Instance.new("TextButton", Panel)
 ESPBtn.Size=UDim2.new(0.88,0,0,26); ESPBtn.Position=UDim2.new(0.06,0,0,100)
 ESPBtn.BackgroundColor3=Color3.fromRGB(0,130,60)
 ESPBtn.TextColor3=Color3.new(1,1,1); ESPBtn.Font=Enum.Font.GothamBold
-ESPBtn.TextSize=11; ESPBtn.BorderSizePixel=0; ESPBtn.Text="ðŸ‘ ESP: ON"
+ESPBtn.TextSize=11; ESPBtn.BorderSizePixel=0; ESPBtn.Text="ESP: ON"
 Instance.new("UICorner",ESPBtn).CornerRadius=UDim.new(0,5)
 
 -- Auto-equip toggle
@@ -531,7 +531,7 @@ local EqBtn = Instance.new("TextButton", Panel)
 EqBtn.Size=UDim2.new(0.88,0,0,26); EqBtn.Position=UDim2.new(0.06,0,0,130)
 EqBtn.BackgroundColor3=Color3.fromRGB(0,100,160)
 EqBtn.TextColor3=Color3.new(1,1,1); EqBtn.Font=Enum.Font.GothamBold
-EqBtn.TextSize=11; EqBtn.BorderSizePixel=0; EqBtn.Text="ðŸ’¾ Auto-Guardar: ON"
+EqBtn.TextSize=11; EqBtn.BorderSizePixel=0; EqBtn.Text="Auto-Store: ON"
 Instance.new("UICorner",EqBtn).CornerRadius=UDim.new(0,5)
 
 -- Status update loop
