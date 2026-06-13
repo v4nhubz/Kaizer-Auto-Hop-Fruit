@@ -492,7 +492,7 @@ hFix.Size=UDim2.new(1,0,0,9); hFix.Position=UDim2.new(0,0,1,-9)
 hFix.BackgroundColor3=Color3.fromRGB(10,10,16); hFix.BorderSizePixel=0
 
 local HTit = Instance.new("TextLabel",Hdr)
-HTit.Text="ðŸ´â€â˜ ï¸ Fruit Hopper"; HTit.Size=UDim2.new(1,-30,1,0)
+HTit.Text="Kaizer Fruit Hopper"; HTit.Size=UDim2.new(1,-30,1,0)
 HTit.Position=UDim2.new(0,10,0,0); HTit.BackgroundTransparency=1
 HTit.TextColor3=Color3.fromRGB(0,220,90); HTit.Font=Enum.Font.GothamBold
 HTit.TextSize=12; HTit.TextXAlignment=Enum.TextXAlignment.Left
@@ -565,13 +565,13 @@ end)
 
 ESPBtn.MouseButton1Click:Connect(function()
     ESPEnabled = not ESPEnabled
-    ESPBtn.Text = ESPEnabled and "ðŸ‘ ESP: ON" or "ðŸ‘ ESP: OFF"
+    ESPBtn.Text = ESPEnabled and "ESP: ON" or "ESP: OFF"
     ESPBtn.BackgroundColor3 = ESPEnabled and Color3.fromRGB(0,130,60) or Color3.fromRGB(60,60,80)
 end)
 
 EqBtn.MouseButton1Click:Connect(function()
     CONFIG.EquipFruit = not CONFIG.EquipFruit
-    EqBtn.Text = CONFIG.EquipFruit and "ðŸ’¾ Auto-Guardar: ON" or "ðŸ’¾ Auto-Guardar: OFF"
+    EqBtn.Text = CONFIG.EquipFruit and "Auto-Store: ON" or "Auto-Store: OFF"
     EqBtn.BackgroundColor3 = CONFIG.EquipFruit and Color3.fromRGB(0,100,160) or Color3.fromRGB(60,60,80)
 end)
 
