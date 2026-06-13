@@ -514,7 +514,7 @@ Instance.new("UICorner",TogBtn).CornerRadius=UDim.new(0,6)
 -- Status label
 local StatLbl = Instance.new("TextLabel", Panel)
 StatLbl.Size=UDim2.new(0.88,0,0,16); StatLbl.Position=UDim2.new(0.06,0,0,80)
-StatLbl.BackgroundTransparency=1; StatLbl.Text="Esperando..."
+StatLbl.BackgroundTransparency=1; StatLbl.Text="Expecting..."
 StatLbl.TextColor3=Color3.fromRGB(170,170,170); StatLbl.Font=Enum.Font.Gotham
 StatLbl.TextSize=10; StatLbl.TextXAlignment=Enum.TextXAlignment.Left
 
